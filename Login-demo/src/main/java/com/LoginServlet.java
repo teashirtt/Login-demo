@@ -33,7 +33,4 @@ public class LoginServlet extends HttpServlet {
 
         sqlSession.close();
     }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
 }
