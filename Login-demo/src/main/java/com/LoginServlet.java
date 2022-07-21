@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 
         if (password.equals(mapper.GetPassword(username))) {
-            System.out.println("YES");
+            response.sendRedirect("/Login_demo_war/webdemo/success.html");
         } else {
             System.out.println("NO");
         }

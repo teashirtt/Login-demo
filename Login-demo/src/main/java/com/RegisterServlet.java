@@ -28,6 +28,7 @@ public class RegisterServlet extends HttpServlet {
         String us = mapper.GetUsername(username);
         if(us==null){
             mapper.add(new User(3,username,password));
+            response.sendRedirect("/Login_demo_war/webdemo/login.html");
         }else{
             System.out.println("Already exists");
         }
