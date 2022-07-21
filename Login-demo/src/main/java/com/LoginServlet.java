@@ -2,16 +2,12 @@ package com;
 
 import com.mapper.UserMapper;
 import com.util.SqlSessionFactoryUtils;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.InputStream;
 
 @WebServlet("/loginServlet")
 public class LoginServlet extends HttpServlet {
@@ -25,6 +21,8 @@ public class LoginServlet extends HttpServlet {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 
         if (password.equals(mapper.GetPassword(username))) {
+            HttpSession session = request.getSession();
+            session.setAttribute("username",username);
             response.sendRedirect("/Login_demo_war/webdemo/success.html");
         } else {
             System.out.println("NO");
